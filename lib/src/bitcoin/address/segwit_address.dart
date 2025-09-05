@@ -50,7 +50,7 @@ abstract class SegwitAddress implements BitcoinBaseAddress {
     if (other is! SegwitAddress) return false;
     if (runtimeType != other.runtimeType) return false;
     if (type != other.type) return false;
-    return addressProgram == addressProgram &&
+    return addressProgram == other.addressProgram &&
         segwitVersion == other.segwitVersion;
   }
 

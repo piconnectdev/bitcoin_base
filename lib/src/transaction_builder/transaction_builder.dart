@@ -190,7 +190,9 @@ class BitcoinTransactionBuilder extends BasedBitcoinTransacationBuilder {
           return script;
         case P2shAddressType.p2pkhInP2sh:
           if (isTaproot) {
-            return multiSigAAddr.toP2shAddress().toScriptPubKey();
+            return multiSigAAddr
+                .toP2shAddress(addressType: P2shAddressType.p2pkhInP2sh)
+                .toScriptPubKey();
           }
           return script;
         default:

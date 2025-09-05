@@ -85,13 +85,13 @@ class ElectrumGetMerkleResponse {
 
 class ElectrumVerbosTxResponse {
   final String txId;
-  final String hash;
-  final int version;
-  final int size;
+  final String? hash;
+  final int? version;
+  final int? size;
   final int? vsize;
   final int? weight;
-  final int locktime;
-  final String hex;
+  final int? locktime;
+  final String? hex;
   final String? blockhash;
   final int? confirmations;
   final int? time;
@@ -100,11 +100,11 @@ class ElectrumVerbosTxResponse {
     return ElectrumVerbosTxResponse(
         txId: json["txid"],
         hash: json["hash"],
-        version: IntUtils.parse(json["version"]),
-        size: IntUtils.parse(json["size"]),
+        version: IntUtils.tryParse(json["version"]),
+        size: IntUtils.tryParse(json["size"]),
         vsize: IntUtils.tryParse(json["vsize"]),
         weight: IntUtils.tryParse(json["weight"]),
-        locktime: IntUtils.parse(json["locktime"]),
+        locktime: IntUtils.tryParse(json["locktime"]),
         hex: json["hex"],
         blockhash: json["blockhash"],
         confirmations: IntUtils.tryParse(json["confirmations"]),
@@ -113,13 +113,13 @@ class ElectrumVerbosTxResponse {
   }
   const ElectrumVerbosTxResponse(
       {required this.txId,
-      required this.hash,
-      required this.version,
-      required this.size,
-      required this.vsize,
-      required this.weight,
-      required this.locktime,
-      required this.hex,
+      this.hash,
+      this.version,
+      this.size,
+      this.vsize,
+      this.weight,
+      this.locktime,
+      this.hex,
       this.blockhash,
       this.confirmations,
       this.time,

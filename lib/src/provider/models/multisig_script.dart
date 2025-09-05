@@ -81,7 +81,7 @@ class MultiSignatureAddress {
   }
 
   BitcoinBaseAddress toP2shAddress(
-      [P2shAddressType addressType = P2shAddressType.p2pkhInP2sh]) {
+      {P2shAddressType addressType = P2shAddressType.p2pkhInP2sh}) {
     if (!legacySupportP2shTypes.contains(addressType)) {
       throw DartBitcoinPluginException(
           "invalid p2sh type please use one of them ${legacySupportP2shTypes.map((e) => "$e").join(", ")}");
@@ -108,7 +108,7 @@ class MultiSignatureAddress {
       case P2shAddressType.p2pkhInP2sh32:
       case P2shAddressType.p2pkhInP2shwt:
       case P2shAddressType.p2pkhInP2sh32wt:
-        return toP2shAddress(addressType as P2shAddressType);
+        return toP2shAddress(addressType: addressType as P2shAddressType);
       default:
         throw const DartBitcoinPluginException(
             'invalid multisig address type. use of of them [BitcoinAddressType.p2wsh, BitcoinAddressType.p2wshInP2sh, BitcoinAddressType.p2pkhInP2sh]');
